@@ -1,14 +1,15 @@
 // ==UserScript==
 // @name         Onestop Strategy News Scroll
 // @namespace    https://github.com/sunilkumarba
-// @version      0.1
+// @version      0.2
 // @description  Auto fetch Onestop Strategy news items on scroll, instead of user having to click "Next Page" button
 // @author       Sunil Kumar B A
 // @match        https://onestopstrategy.com/news/
 // @match        https://onestopstrategy.com/news/page/*
+// @update       https://raw.githubusercontent.com/sunilkumarba/userscripts/main/onestopstrategy.js
 // @icon         https://www.google.com/s2/favicons?domain=onestopstrategy.com
 // @require      https://code.jquery.com/jquery-3.5.1.min.js
-// @require      https://kit.fontawesome.com/36cdf20281.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js
 // @grant        GM_addStyle
 // ==/UserScript==
 
@@ -35,12 +36,13 @@
 
     function updateAutoFetchOnScrollButton() {
       const btnToggleAutoFetchOnScroll = $(document.getElementById("autoFetchOnScrollToggleBtn")),
-            btnIco = $(btnToggleAutoFetchOnScroll.find("i")[0]),
             enableClass = "check-square",
             disableClass = "square";
 
-      btnIco.toggleClass(`fa-${disableClass}`, disableAutoFetchOnScroll);
-      btnIco.toggleClass(`fa-${enableClass}`, !disableAutoFetchOnScroll);
+      btnToggleAutoFetchOnScroll
+        .find('[data-fa-i2svg]')
+        .toggleClass(`fa-${disableClass}`, disableAutoFetchOnScroll)
+        .toggleClass(`fa-${enableClass}`, !disableAutoFetchOnScroll);
 
       displayPager(disableAutoFetchOnScroll);
 
@@ -53,7 +55,8 @@
     }
 
     function addAutoFetchToggleButton() {
-      var toggleAutoFetchOnScrollButtonHtml = "<button id='autoFetchOnScrollToggleBtn'><i class='far'></i> Auto Fetch</button>";
+      var  iconClass = disableAutoFetchOnScroll ? 'square' : 'check-square',
+           toggleAutoFetchOnScrollButtonHtml = "<button id='autoFetchOnScrollToggleBtn'><i class='far fa-"+iconClass+"'></i> Auto Fetch</button>";
 
       $("body").append(toggleAutoFetchOnScrollButtonHtml);
 
