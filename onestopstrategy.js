@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         Onestop Strategy News Scroll
 // @namespace    https://github.com/sunilkumarba
-// @version      0.23
+// @version      0.24
 // @description  Auto fetch Onestop Strategy news items on scroll, instead of user having to click "Next Page" button
 // @author       Sunil Kumar B A
+// @match        https://onestopstrategy.com/
 // @match        https://onestopstrategy.com/news/
 // @match        https://onestopstrategy.com/news/page/*
 // @updateURL    https://raw.githubusercontent.com/sunilkumarba/userscripts/master/onestopstrategy.js
@@ -175,11 +176,20 @@
     function initialize() {
       $(window).scroll(checkAndFetchNewsItems);
 
-      updateNewsTitles();
-      addAutoFetchToggleButton();
-      addFetchSpinner();
+      let moreButton = $('.link-more a');
+      moreButton = moreButton ? moreButton[0] : null;
 
-      enableCustomCssStyles();
+      if(moreButton) {
+        moreButton.click();
+        return;
+      }
+      else {
+        updateNewsTitles();
+        addAutoFetchToggleButton();
+        addFetchSpinner();
+
+        enableCustomCssStyles();
+      }
     }
 
     initialize();
