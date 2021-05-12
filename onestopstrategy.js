@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Onestop Strategy News Scroll
 // @namespace    https://github.com/sunilkumarba
-// @version      0.24
+// @version      0.25
 // @description  Auto fetch Onestop Strategy news items on scroll, instead of user having to click "Next Page" button
 // @author       Sunil Kumar B A
 // @match        https://onestopstrategy.com/
