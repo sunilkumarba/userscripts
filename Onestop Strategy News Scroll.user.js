@@ -7,8 +7,6 @@
 // @match        https://onestopstrategy.com/
 // @match        https://onestopstrategy.com/news/
 // @match        https://onestopstrategy.com/news/page/*
-// @updateURL    https://raw.githubusercontent.com/sunilkumarba/userscripts/master/onestopstrategy.js
-// @downloadURL  https://raw.githubusercontent.com/sunilkumarba/userscripts/master/onestopstrategy.js
 // @icon         https://www.google.com/s2/favicons?domain=onestopstrategy.com
 // @require      https://code.jquery.com/jquery-3.5.1.min.js
 // @require      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js

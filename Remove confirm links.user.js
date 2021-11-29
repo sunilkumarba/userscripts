@@ -502,13 +502,13 @@
       false
     );
 
-    GM_getTab(function (tab) {
-      console.log("GM_getTab: ", tab);
+    GM_getTab(function (tab, args) {
+      console.log("GM_getTab: ", tab, args);
 
-      if (!tab.id)
+      if (Object.keys(tab).length == 0)
         GM_saveTab({
-          id: parseInt(Math.random() * 100000000),
           name: "Direct links out",
+          seedValue: parseInt(Math.random() * 100000000),
         });
     });
 
